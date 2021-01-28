@@ -161,14 +161,14 @@ def station_stats(df):
         popular_start_station = df['Start Station'].mode()[0]
         print(f"\nMost commonly used start station:", popular_start_station)
     except Exception as e:
-        print('Could not calculate the most commonly used start station, as an Error occurred: {}'.format(e))
+        print('It was not possible to calculate the most commonly used start station, as an Error occurred: {}'.format(e))
 
     # TO DO: display most commonly used end station
     try:
         popular_end_station = df['End Station'].mode()[0]
         print(f'\nMost commonly used end station :', popular_end_station)
     except Exception as e:
-        print('Could not calculate the most commonly used end station, as an Error occurred: {}'.format(e))
+        print('It was not possible to calculate the most commonly used end station, as an Error occurred: {}'.format(e))
 
     # TO DO: display most frequent combination of start station and end station trip
     try:
@@ -176,7 +176,7 @@ def station_stats(df):
         frequent_start_end = df [ 'start to end station'].mode()[0]
         print(f'\nMost frequent combination of start station and end station trip :', frequent_start_end)
     except Exception as e:
-        print('Could not calculate the most frequent combination of start station and end station trip, as an Error occurred: {}'.format(e))
+        print('It was not possible to calculate the most frequent combination of start station and end station trip, as an Error occurred: {}'.format(e))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
