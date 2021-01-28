@@ -33,7 +33,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
     city = ''
@@ -47,11 +47,11 @@ def get_filters():
             print("\nRestarting...")
 
     print(f"\nYou have chosen {city.title()} to analyze.")
-    
+
     # TO DO: get user input for month (all, january, february, ... , june)
 
     month = ''
-    
+
     while month not in MONTH_DATA:
         print("\nPlease enter the month, between January to June or all you want to explore:")
         month = input().lower()
@@ -60,12 +60,12 @@ def get_filters():
             print("\nNot valid. Please check your input.")
             print("\nRestarting...")
 
-    print(f"\nYou have chosen {month.title()} to filter by.")    
-    
+    print(f"\nYou have chosen {month.title()} to filter by.")
+
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
 
     day = ''
-    
+
     while day not in DAY_LIST:
         print("\nPlease type which day of the week or all you want to explore: ")
         day = input().lower()
@@ -74,7 +74,7 @@ def get_filters():
             print("\nNot valid. Please check your input.")
             print("\nRestarting...")
     print(f"\nYou have chosen {day.title()} to filter by.")
-    
+
     print(f"\nYou have chosen to view data for city: {city.upper()}, month/s: {month.upper()} and day/s: {day.upper()}.")
     print('-'*40)
     return city, month, day
@@ -129,21 +129,21 @@ def time_stats(df):
         most_common_month = MONTH_DATA[most_common_month_num-1].title()
         print(f"\nMost common month: {most_common_month}")
     except Exception as e:
-        print('\nCould not calculate the most common month, as an error ocurred: {}'.format(e)) 
-    
+        print('\nIt was not possible to calculate the most common month, as an error ocurred: {}'.format(e))
+
     # TO DO: display the most common day of week
     try:
         most_common_day = df['Start Time'].dt.weekday_name.mode()[0]
         print(f"\nMost common day of week: {most_common_day}")
     except Exception as e:
-        print('Could not calculate the most common day of week, as an Error occurred: {}'.format(e))
+        print('It was not possible to calculate the most common day of week, as an Error occurred: {}'.format(e))
 
     # TO DO: display the most common start hour
     try:
         most_common_start_hour = df['Start Time'].dt.hour.mode()[0]
         print(f"\nMost common start Hour: {most_common_start_hour}")
     except Exception as e:
-        print('Could not calculate the most common start hour, as an Error occurred: {}'.format(e))
+        print('It was not possible to calculate the most common start hour, as an Error occurred: {}'.format(e))
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -169,7 +169,7 @@ def station_stats(df):
         print(f'\nMost commonly used end station :', popular_end_station)
     except Exception as e:
         print('Could not calculate the most commonly used end station, as an Error occurred: {}'.format(e))
-    
+
     # TO DO: display most frequent combination of start station and end station trip
     try:
         df['start to end station'] = df['Start Station'].str.cat(df['End Station'], sep=' to ')
@@ -177,8 +177,8 @@ def station_stats(df):
         print(f'\nMost frequent combination of start station and end station trip :', frequent_start_end)
     except Exception as e:
         print('Could not calculate the most frequent combination of start station and end station trip, as an Error occurred: {}'.format(e))
-    
-    
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -227,7 +227,7 @@ def user_stats(df):
         print(f"\nThe earliest year of birth: {earliest}\n\nThe most recent year of birth: {recent}\n\nThe most common year of birth: {common_year}")
     except:
         print("There are no birth year details considering the filters choosed.")
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -237,7 +237,7 @@ def display_raw_data(df):
     raw = input("\nWould you like to see some raw data? Enter yes or no.\n").lower() # TO DO: convert the user input to lower case using lower() function
     pd.set_option('display.max_columns',200)
 
-    while True:            
+    while True:
         if raw == 'no':
             break
         print(df.iloc[i:i+5]) # TO DO: appropriately subset/slice your dataframe to display next five rows
